@@ -21,6 +21,7 @@ function StopMotion(options) {
   this.inCodec = String(options.inCodec || 'gif')
   this.outCodec = String(options.outCodec || 'libvpx')
   this.crf = String(options.crf || '23')
+  this.extraOptions = String(options.extraOptions || '')
 
   this._dirname = tmp()
   this._pending = 0
@@ -69,6 +70,8 @@ StopMotion.prototype.check = function() {
   var stderr = ''
   var self = this
 
+  console.log ('Villetest..');
+
   var ps = spawn('ffmpeg', [
     // input
       '-f',      'image2'
@@ -80,6 +83,7 @@ StopMotion.prototype.check = function() {
     , '-vf',     'scale='+this.width+':'+this.height
     , '-vcodec', this.outCodec
     , '-crf',    this.crf
+    , this.extraOptions
     , '-' // output to stdout
   ])
 
