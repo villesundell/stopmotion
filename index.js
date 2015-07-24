@@ -83,7 +83,8 @@ StopMotion.prototype.check = function() {
     , '-vf',     'scale='+this.width+':'+this.height
     , '-vcodec', this.outCodec
     , '-crf',    this.crf
-    , this.extraOptions
+    , '-movflags','frag_keyframe+empty_moov'
+    //, this.extraOptions
     , '-' // output to stdout
   ])
 
