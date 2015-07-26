@@ -72,7 +72,7 @@ StopMotion.prototype.check = function() {
 
   console.log ('Villetest..');
 
-  var ps = spawn('ffmpeg', [
+  var ps = spawn('avconv', [
     // input
       '-f',      'image2'
     , '-vcodec', this.inCodec
